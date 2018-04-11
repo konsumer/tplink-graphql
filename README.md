@@ -4,6 +4,8 @@ This will make a GraphQL server for controlling and looking in on all the TPLink
 
 Here is the [API docs](api.md).
 
+![screenshot](screenshot.png)
+
 ## getting started
 
 * [Download](LINK_NEEDED) this project
