@@ -2,9 +2,10 @@
   "name": "tplink-graphql",
   "version": "0.0.0",
   "private": true,
-  "description": "Control the TPLink lights on your network from graphql",
+  "description": "Control the TPLink lights on your network from GraphQL",
   "scripts": {
-    "start": "babel-node src/server.js"
+    "start": "babel-node src/server.js",
+    "docs": "graphql-markdown http://localhost:3000/graphql > api.md"
   },
   "keywords": [],
   "author": "David Konsumer <konsumer@jetboystudio.com> (http://konsumer.js.org)",
@@ -38,5 +39,8 @@
       "env",
       "stage-3"
     ]
+  },
+  "devDependencies": {
+    "graphql-markdown": "^3.2.0"
   }
 }

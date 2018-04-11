@@ -2,6 +2,8 @@
 
 This will make a GraphQL server for controlling and looking in on all the TPLink lights on your local network.
 
+Here is the [API docs](api.md).
+
 ## getting started
 
 * [Download](LINK_NEEDED) this project
