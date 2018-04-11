@@ -96,7 +96,11 @@ get info about a single light
 <tr>
 <td colspan="2" valign="top"><strong>id</strong></td>
 <td valign="top"><a href="#id">ID</a>!</td>
-<td></td>
+<td>
+
+ID used for other queries
+
+</td>
 </tr>
 <tr>
 <td colspan="2" valign="top"><strong>sw_ver</strong></td>
@@ -151,7 +155,11 @@ get info about a single light
 <tr>
 <td colspan="2" valign="top"><strong>is_factory</strong></td>
 <td valign="top"><a href="#boolean">Boolean</a>!</td>
-<td></td>
+<td>
+
+is the device factory-reset?
+
+</td>
 </tr>
 <tr>
 <td colspan="2" valign="top"><strong>disco_ver</strong></td>
@@ -171,17 +179,29 @@ get info about a single light
 <tr>
 <td colspan="2" valign="top"><strong>is_dimmable</strong></td>
 <td valign="top"><a href="#int">Int</a>!</td>
-<td></td>
+<td>
+
+can it be dimmed?
+
+</td>
 </tr>
 <tr>
 <td colspan="2" valign="top"><strong>is_color</strong></td>
 <td valign="top"><a href="#int">Int</a>!</td>
-<td></td>
+<td>
+
+can it do actual colors?
+
+</td>
 </tr>
 <tr>
 <td colspan="2" valign="top"><strong>is_variable_color_temp</strong></td>
 <td valign="top"><a href="#int">Int</a>!</td>
-<td></td>
+<td>
+
+can it do color-temp
+
+</td>
 </tr>
 <tr>
 <td colspan="2" valign="top"><strong>preferred_state</strong></td>
@@ -221,7 +241,11 @@ get info about a single light
 <tr>
 <td colspan="2" valign="top"><strong>on_off</strong></td>
 <td valign="top"><a href="#boolean">Boolean</a></td>
-<td></td>
+<td>
+
+is the light on or off?
+
+</td>
 </tr>
 <tr>
 <td colspan="2" valign="top"><strong>mode</strong></td>
@@ -231,22 +255,38 @@ get info about a single light
 <tr>
 <td colspan="2" valign="top"><strong>hue</strong></td>
 <td valign="top"><a href="#int">Int</a></td>
-<td></td>
+<td>
+
+rotation degree (0-360) of hue
+
+</td>
 </tr>
 <tr>
 <td colspan="2" valign="top"><strong>saturation</strong></td>
 <td valign="top"><a href="#int">Int</a></td>
-<td></td>
+<td>
+
+saturation percent (0-100) of the light
+
+</td>
 </tr>
 <tr>
 <td colspan="2" valign="top"><strong>color_temp</strong></td>
 <td valign="top"><a href="#int">Int</a></td>
-<td></td>
+<td>
+
+(kelvin: 1700-27000) of the light
+
+</td>
 </tr>
 <tr>
 <td colspan="2" valign="top"><strong>brightness</strong></td>
 <td valign="top"><a href="#int">Int</a></td>
-<td></td>
+<td>
+
+brightness percent (0-100) of the light
+
+</td>
 </tr>
 </tbody>
 </table>
