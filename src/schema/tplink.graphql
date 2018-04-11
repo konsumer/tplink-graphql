@@ -4,16 +4,16 @@ type ControlProtocol {
 }
 
 type LightState {
-  on_off: Boolean
+  on_off: Boolean # is the light on or off?
   mode: String
-  hue: Int
-  saturation: Int
-  color_temp: Int
-  brightness: Int
+  hue: Int        # rotation degree (0-360) of hue
+  saturation: Int # saturation percent (0-100) of the light
+  color_temp: Int # (kelvin: 1700-27000) of the light
+  brightness: Int # brightness percent (0-100) of the light
 }
 
 type Light {
-  id: ID!
+  id: ID!                         # ID used for other queries
   sw_ver: String!
   hw_ver: String!
   model: String!
@@ -24,19 +24,20 @@ type Light {
   mic_mac: String!
   oemId: String!
   hwId: String!
-  is_factory: Boolean!
+  is_factory: Boolean!             # is the device factory-reset?
   disco_ver: String!
   ctrl_protocols: ControlProtocol!
   light_state: LightState!
-  is_dimmable: Int!
-  is_color: Int!
-  is_variable_color_temp: Int!
+  is_dimmable: Int!                # can it be dimmed?
+  is_color: Int!                   # can it do actual colors?
+  is_variable_color_temp: Int!     # can it do color-temp
   preferred_state: [LightState]!
   rssi: Int!
   active_mode: String!
   heapsize: Int!
 }
 
+# Queries you can run that give you information
 type Query {
   # get list of lights seen
   getAllLights: [Light]
@@ -45,6 +46,7 @@ type Query {
   getLight(id: ID!): Light
 }
 
+# Mutations that modify the state of thigns
 type Mutation {
   # turn light on or off, optionally use transitionTime (in ms)
   power(id:ID!, state:Boolean!, transitionTime:Int = 0): LightState
