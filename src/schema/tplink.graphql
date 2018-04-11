@@ -4,16 +4,27 @@ type ControlProtocol {
 }
 
 type LightState {
-  on_off: Boolean # is the light on or off?
+  # is the light on or off?
+  on_off: Boolean 
+  
   mode: String
-  hue: Int        # rotation degree (0-360) of hue
-  saturation: Int # saturation percent (0-100) of the light
-  color_temp: Int # (kelvin: 1700-27000) of the light
-  brightness: Int # brightness percent (0-100) of the light
+  
+  # rotation degree (0-360) of hue
+  hue: Int
+
+  # saturation percent (0-100) of the light
+  saturation: Int
+
+  # (kelvin: 1700-27000) of the light
+  color_temp: Int
+
+  # brightness percent (0-100) of the light
+  brightness: Int
 }
 
 type Light {
-  id: ID!                         # ID used for other queries
+  # ID used for other queries
+  id: ID!
   sw_ver: String!
   hw_ver: String!
   model: String!
@@ -24,13 +35,23 @@ type Light {
   mic_mac: String!
   oemId: String!
   hwId: String!
-  is_factory: Boolean!             # is the device factory-reset?
+
+  # is the device factory-reset?
+  is_factory: Boolean!
+  
   disco_ver: String!
   ctrl_protocols: ControlProtocol!
   light_state: LightState!
-  is_dimmable: Int!                # can it be dimmed?
-  is_color: Int!                   # can it do actual colors?
-  is_variable_color_temp: Int!     # can it do color-temp
+  
+  # can it be dimmed?
+  is_dimmable: Int!
+  
+  # can it do actual colors?
+  is_color: Int!
+
+  # can it do color-temp
+  is_variable_color_temp: Int!
+  
   preferred_state: [LightState]!
   rssi: Int!
   active_mode: String!
