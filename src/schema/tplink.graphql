@@ -1,0 +1,60 @@
+type ControlProtocol {
+  name: String!
+  version: String!
+}
+
+type LightState {
+  on_off: Boolean
+  mode: String
+  hue: Int
+  saturation: Int
+  color_temp: Int
+  brightness: Int
+}
+
+type Light {
+  id: ID!
+  sw_ver: String!
+  hw_ver: String!
+  model: String!
+  description: String!
+  alias: String!
+  mic_type: String!
+  dev_state: String!
+  mic_mac: String!
+  oemId: String!
+  hwId: String!
+  is_factory: Boolean!
+  disco_ver: String!
+  ctrl_protocols: ControlProtocol!
+  light_state: LightState!
+  is_dimmable: Int!
+  is_color: Int!
+  is_variable_color_temp: Int!
+  preferred_state: [LightState]!
+  rssi: Int!
+  active_mode: String!
+  heapsize: Int!
+}
+
+type Query {
+  # get list of lights seen
+  getAllLights: [Light]
+  
+  # get info about a single light
+  getLight(id: ID!): Light
+}
+
+type Mutation {
+  # turn light on or off, optionally use transitionTime (in ms)
+  power(id:ID!, state:Boolean!, transitionTime:Int = 0): LightState
+
+  # set the color-temp (kelvin: 1700-27000) of the light
+  temp(id:ID!, transitionTime:Int = 0, temp: Int!): LightState
+
+  # set the brightness (0-100) of the light
+  brightness(id:ID!, transitionTime:Int = 0, brightness: Int!): LightState
+
+  # set the color of the light
+  color(id:ID!, transitionTime:Int = 0, color: String!): LightState
+}
