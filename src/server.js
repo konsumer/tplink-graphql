@@ -26,7 +26,7 @@ const globRequire = (pattern, ignore) => {
 
 const schemaDir = path.join(__dirname, 'schema')
 
-const resolvers = globRequire(path.join(schemaDir, '*.js'), path.join(schemaDir, '*.*.js'))
+const resolvers = globRequire(path.join(schemaDir, '**/*.js'))
 const typeDefs = mergeTypes(fileLoader(path.join(schemaDir, '**/*.graphql')), { all: true })
 
 const app = express()
