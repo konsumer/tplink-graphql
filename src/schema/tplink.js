@@ -21,6 +21,15 @@ const computeColor = color => {
   }
 }
 
+// wrapper around power call to get info
+const power = async (id, state, transitionTime, options) => {
+  const { system: { set_relay_state: { err_code } } } = await setPower(devices[id], state, transitionTime, options)
+  if (err_code) {
+    throw new Error(`Error #${err_code}`)
+  }
+  return devices[id].info()
+}
+
 // get initial list of devices
 TPLSmartDevice
   .scan()
@@ -31,19 +40,16 @@ TPLSmartDevice
     }
   })
 
-// TODO: use a resolver for Light, so I can send things right away that don't need to be fresh
-
 export default {
   Mutation: {
-    power: (_, { id, state, transitionTime }) => setPower(devices[id], state, transitionTime),
+    power: (_, { id, state, transitionTime }) => power(id, state, transitionTime),
 
-    temp: (_, { id, transitionTime, temp }) => setPower(devices[id], true, transitionTime, { color_temp: temp }),
+    temp: (_, { id, transitionTime, temp }) => power(id, true, transitionTime, { color_temp: temp }),
 
-    brightness: (_, { id, transitionTime, brightness }) => setPower(devices[id], true, transitionTime, { brightness }),
+    brightness: (_, { id, transitionTime, brightness }) => power(id, true, transitionTime, { brightness }),
 
-    color: (_, { id, transitionTime, color }) => setPower(devices[id], true, transitionTime, computeColor(color))
+    color: (_, { id, transitionTime, color }) => power(id, true, transitionTime, computeColor(color))
   },
-
   Query: {
     getAllLights: () => Object.values(devices).map(d => devices[d.deviceId].info()),
 

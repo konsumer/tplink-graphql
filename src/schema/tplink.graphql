@@ -3,25 +3,6 @@ type ControlProtocol {
   version: String!
 }
 
-type LightState {
-  # is the light on or off?
-  on_off: Boolean 
-  
-  mode: String
-  
-  # rotation degree (0-360) of hue
-  hue: Int
-
-  # saturation percent (0-100) of the light
-  saturation: Int
-
-  # (kelvin: 1700-27000) of the light
-  color_temp: Int
-
-  # brightness percent (0-100) of the light
-  brightness: Int
-}
-
 type Light {
   id: String!
   sw_ver:  String!
@@ -31,7 +12,7 @@ type Light {
   mac:  String!
   dev_name:  String!
   alias: String!
-  relay_state: Int!
+  relay_state: Boolean!
   on_time: Int!
   active_mode:  String!
   feature:  String!
@@ -59,14 +40,14 @@ type Query {
 # Mutations that modify the state of thigns
 type Mutation {
   # turn light on or off, optionally use transitionTime (in ms)
-  power(id:ID!, state:Boolean!, transitionTime:Int = 0): LightState
+  power(id:ID!, state:Boolean!, transitionTime:Int = 0): Light
 
   # set the color-temp (kelvin: 1700-27000) of the light
-  temp(id:ID!, transitionTime:Int = 0, temp: Int!): LightState
+  temp(id:ID!, transitionTime:Int = 0, temp: Int!): Light
 
   # set the brightness (0-100) of the light
-  brightness(id:ID!, transitionTime:Int = 0, brightness: Int!): LightState
+  brightness(id:ID!, transitionTime:Int = 0, brightness: Int!): Light
 
   # set the color of the light
-  color(id:ID!, transitionTime:Int = 0, color: String!): LightState
+  color(id:ID!, transitionTime:Int = 0, color: String!): Light
 }
