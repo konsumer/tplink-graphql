@@ -7,13 +7,15 @@
   * [Objects](#objects)
     * [ControlProtocol](#controlprotocol)
     * [Light](#light)
-    * [LightState](#lightstate)
     * [Mutation](#mutation)
+  * [Enums](#enums)
+    * [CacheControlScope](#cachecontrolscope)
   * [Scalars](#scalars)
     * [Boolean](#boolean)
     * [ID](#id)
     * [Int](#int)
     * [String](#string)
+    * [Upload](#upload)
 
 </details>
 
@@ -95,12 +97,8 @@ get info about a single light
 <tbody>
 <tr>
 <td colspan="2" valign="top"><strong>id</strong></td>
-<td valign="top"><a href="#id">ID</a>!</td>
-<td>
-
-ID used for other queries
-
-</td>
+<td valign="top"><a href="#string">String</a>!</td>
+<td></td>
 </tr>
 <tr>
 <td colspan="2" valign="top"><strong>sw_ver</strong></td>
@@ -113,12 +111,22 @@ ID used for other queries
 <td></td>
 </tr>
 <tr>
+<td colspan="2" valign="top"><strong>mic_type</strong></td>
+<td valign="top"><a href="#string">String</a>!</td>
+<td></td>
+</tr>
+<tr>
 <td colspan="2" valign="top"><strong>model</strong></td>
 <td valign="top"><a href="#string">String</a>!</td>
 <td></td>
 </tr>
 <tr>
-<td colspan="2" valign="top"><strong>description</strong></td>
+<td colspan="2" valign="top"><strong>mac</strong></td>
+<td valign="top"><a href="#string">String</a>!</td>
+<td></td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>dev_name</strong></td>
 <td valign="top"><a href="#string">String</a>!</td>
 <td></td>
 </tr>
@@ -128,88 +136,12 @@ ID used for other queries
 <td></td>
 </tr>
 <tr>
-<td colspan="2" valign="top"><strong>mic_type</strong></td>
-<td valign="top"><a href="#string">String</a>!</td>
-<td></td>
-</tr>
-<tr>
-<td colspan="2" valign="top"><strong>dev_state</strong></td>
-<td valign="top"><a href="#string">String</a>!</td>
-<td></td>
-</tr>
-<tr>
-<td colspan="2" valign="top"><strong>mic_mac</strong></td>
-<td valign="top"><a href="#string">String</a>!</td>
-<td></td>
-</tr>
-<tr>
-<td colspan="2" valign="top"><strong>oemId</strong></td>
-<td valign="top"><a href="#string">String</a>!</td>
-<td></td>
-</tr>
-<tr>
-<td colspan="2" valign="top"><strong>hwId</strong></td>
-<td valign="top"><a href="#string">String</a>!</td>
-<td></td>
-</tr>
-<tr>
-<td colspan="2" valign="top"><strong>is_factory</strong></td>
+<td colspan="2" valign="top"><strong>relay_state</strong></td>
 <td valign="top"><a href="#boolean">Boolean</a>!</td>
-<td>
-
-is the device factory-reset?
-
-</td>
-</tr>
-<tr>
-<td colspan="2" valign="top"><strong>disco_ver</strong></td>
-<td valign="top"><a href="#string">String</a>!</td>
 <td></td>
 </tr>
 <tr>
-<td colspan="2" valign="top"><strong>ctrl_protocols</strong></td>
-<td valign="top"><a href="#controlprotocol">ControlProtocol</a>!</td>
-<td></td>
-</tr>
-<tr>
-<td colspan="2" valign="top"><strong>light_state</strong></td>
-<td valign="top"><a href="#lightstate">LightState</a>!</td>
-<td></td>
-</tr>
-<tr>
-<td colspan="2" valign="top"><strong>is_dimmable</strong></td>
-<td valign="top"><a href="#int">Int</a>!</td>
-<td>
-
-can it be dimmed?
-
-</td>
-</tr>
-<tr>
-<td colspan="2" valign="top"><strong>is_color</strong></td>
-<td valign="top"><a href="#int">Int</a>!</td>
-<td>
-
-can it do actual colors?
-
-</td>
-</tr>
-<tr>
-<td colspan="2" valign="top"><strong>is_variable_color_temp</strong></td>
-<td valign="top"><a href="#int">Int</a>!</td>
-<td>
-
-can it do color-temp
-
-</td>
-</tr>
-<tr>
-<td colspan="2" valign="top"><strong>preferred_state</strong></td>
-<td valign="top">[<a href="#lightstate">LightState</a>]!</td>
-<td></td>
-</tr>
-<tr>
-<td colspan="2" valign="top"><strong>rssi</strong></td>
+<td colspan="2" valign="top"><strong>on_time</strong></td>
 <td valign="top"><a href="#int">Int</a>!</td>
 <td></td>
 </tr>
@@ -219,74 +151,59 @@ can it do color-temp
 <td></td>
 </tr>
 <tr>
-<td colspan="2" valign="top"><strong>heapsize</strong></td>
+<td colspan="2" valign="top"><strong>feature</strong></td>
+<td valign="top"><a href="#string">String</a>!</td>
+<td></td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>updating</strong></td>
+<td valign="top"><a href="#boolean">Boolean</a>!</td>
+<td></td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>icon_hash</strong></td>
+<td valign="top"><a href="#string">String</a>!</td>
+<td></td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>rssi</strong></td>
 <td valign="top"><a href="#int">Int</a>!</td>
 <td></td>
 </tr>
-</tbody>
-</table>
-
-### LightState
-
-<table>
-<thead>
 <tr>
-<th align="left">Field</th>
-<th align="right">Argument</th>
-<th align="left">Type</th>
-<th align="left">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td colspan="2" valign="top"><strong>on_off</strong></td>
-<td valign="top"><a href="#boolean">Boolean</a></td>
-<td>
-
-is the light on or off?
-
-</td>
-</tr>
-<tr>
-<td colspan="2" valign="top"><strong>mode</strong></td>
-<td valign="top"><a href="#string">String</a></td>
+<td colspan="2" valign="top"><strong>led_off</strong></td>
+<td valign="top"><a href="#boolean">Boolean</a>!</td>
 <td></td>
 </tr>
 <tr>
-<td colspan="2" valign="top"><strong>hue</strong></td>
-<td valign="top"><a href="#int">Int</a></td>
-<td>
-
-rotation degree (0-360) of hue
-
-</td>
+<td colspan="2" valign="top"><strong>longitude</strong></td>
+<td valign="top"><a href="#int">Int</a>!</td>
+<td></td>
 </tr>
 <tr>
-<td colspan="2" valign="top"><strong>saturation</strong></td>
-<td valign="top"><a href="#int">Int</a></td>
-<td>
-
-saturation percent (0-100) of the light
-
-</td>
+<td colspan="2" valign="top"><strong>latitude</strong></td>
+<td valign="top"><a href="#int">Int</a>!</td>
+<td></td>
 </tr>
 <tr>
-<td colspan="2" valign="top"><strong>color_temp</strong></td>
-<td valign="top"><a href="#int">Int</a></td>
-<td>
-
-(kelvin: 1700-27000) of the light
-
-</td>
+<td colspan="2" valign="top"><strong>hwId</strong></td>
+<td valign="top"><a href="#string">String</a>!</td>
+<td></td>
 </tr>
 <tr>
-<td colspan="2" valign="top"><strong>brightness</strong></td>
-<td valign="top"><a href="#int">Int</a></td>
-<td>
-
-brightness percent (0-100) of the light
-
-</td>
+<td colspan="2" valign="top"><strong>fwId</strong></td>
+<td valign="top"><a href="#string">String</a>!</td>
+<td></td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>deviceId</strong></td>
+<td valign="top"><a href="#string">String</a>!</td>
+<td></td>
+</tr>
+<tr>
+<td colspan="2" valign="top"><strong>oemId</strong></td>
+<td valign="top"><a href="#string">String</a>!</td>
+<td></td>
 </tr>
 </tbody>
 </table>
@@ -305,7 +222,7 @@ brightness percent (0-100) of the light
 <tbody>
 <tr>
 <td colspan="2" valign="top"><strong>power</strong></td>
-<td valign="top"><a href="#lightstate">LightState</a></td>
+<td valign="top"><a href="#light">Light</a></td>
 <td>
 
 turn light on or off, optionally use transitionTime (in ms)
@@ -329,7 +246,7 @@ turn light on or off, optionally use transitionTime (in ms)
 </tr>
 <tr>
 <td colspan="2" valign="top"><strong>temp</strong></td>
-<td valign="top"><a href="#lightstate">LightState</a></td>
+<td valign="top"><a href="#light">Light</a></td>
 <td>
 
 set the color-temp (kelvin: 1700-27000) of the light
@@ -353,7 +270,7 @@ set the color-temp (kelvin: 1700-27000) of the light
 </tr>
 <tr>
 <td colspan="2" valign="top"><strong>brightness</strong></td>
-<td valign="top"><a href="#lightstate">LightState</a></td>
+<td valign="top"><a href="#light">Light</a></td>
 <td>
 
 set the brightness (0-100) of the light
@@ -377,7 +294,7 @@ set the brightness (0-100) of the light
 </tr>
 <tr>
 <td colspan="2" valign="top"><strong>color</strong></td>
-<td valign="top"><a href="#lightstate">LightState</a></td>
+<td valign="top"><a href="#light">Light</a></td>
 <td>
 
 set the color of the light
@@ -402,6 +319,27 @@ set the color of the light
 </tbody>
 </table>
 
+## Enums
+
+### CacheControlScope
+
+<table>
+<thead>
+<th align="left">Value</th>
+<th align="left">Description</th>
+</thead>
+<tbody>
+<tr>
+<td valign="top"><strong>PUBLIC</strong></td>
+<td></td>
+</tr>
+<tr>
+<td valign="top"><strong>PRIVATE</strong></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
 ## Scalars
 
 ### Boolean
@@ -419,4 +357,8 @@ The `Int` scalar type represents non-fractional signed whole numeric values. Int
 ### String
 
 The `String` scalar type represents textual data, represented as UTF-8 character sequences. The String type is most often used by GraphQL to represent free-form human-readable text.
+
+### Upload
+
+The `Upload` scalar type represents a file upload.
 
