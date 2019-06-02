@@ -3,14 +3,6 @@ import Chromath from 'chromath'
 
 export const devices = {}
 
-const normalizeLight = lightRaw => {
-  return {
-    ...lightRaw,
-    id: lightRaw.deviceId,
-    light_state: {on_off: !!lightRaw.light_state.on_off, ...lightRaw.light_state.dft_on_state}
-  }
-}
-
 const setPower = async (light, state, transitionTime, options) => {
   const out = await light.power(state, transitionTime, options)
   if (out.err_msg) {
@@ -53,8 +45,14 @@ export default {
   },
 
   Query: {
-    getAllLights: () => Object.values(devices).map(d => devices[d.deviceId].info().then(normalizeLight)),
+    getAllLights: () => Object.values(devices).map(d => devices[d.deviceId].info()),
 
-    getLight: (_, { id }) => devices[id].info().then(normalizeLight)
+    getLight: (_, { id }) => devices[id].info()
+  },
+
+  Light: {
+    longitude: ({ longitude_i }) => longitude_i,
+    latitude: ({ latitude_i }) => latitude_i,
+    id: ({ deviceId }) => deviceId
   }
 }

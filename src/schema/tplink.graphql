@@ -23,39 +23,28 @@ type LightState {
 }
 
 type Light {
-  # ID used for other queries
-  id: ID!
-  sw_ver: String!
-  hw_ver: String!
-  model: String!
-  description: String!
+  id: String!
+  sw_ver:  String!
+  hw_ver:  String!
+  mic_type:  String!
+  model:  String!
+  mac:  String!
+  dev_name:  String!
   alias: String!
-  mic_type: String!
-  dev_state: String!
-  mic_mac: String!
-  oemId: String!
-  hwId: String!
-
-  # is the device factory-reset?
-  is_factory: Boolean!
-  
-  disco_ver: String!
-  ctrl_protocols: ControlProtocol!
-  light_state: LightState!
-  
-  # can it be dimmed?
-  is_dimmable: Int!
-  
-  # can it do actual colors?
-  is_color: Int!
-
-  # can it do color-temp
-  is_variable_color_temp: Int!
-  
-  preferred_state: [LightState]!
+  relay_state: Int!
+  on_time: Int!
+  active_mode:  String!
+  feature:  String!
+  updating: Boolean!
+  icon_hash:  String!
   rssi: Int!
-  active_mode: String!
-  heapsize: Int!
+  led_off: Boolean!
+  longitude: Int!
+  latitude: Int!
+  hwId:  String!
+  fwId:  String!
+  deviceId: String!
+  oemId: String!
 }
 
 # Queries you can run that give you information
