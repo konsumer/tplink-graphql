@@ -11,12 +11,12 @@
   "author": "David Konsumer <konsumer@jetboystudio.com> (http://konsumer.js.org)",
   "license": "MIT",
   "dependencies": {
+    "@babel/core": "latest",
+    "@babel/node": "latest",
+    "@babel/preset-env": "latest",
     "apollo-errors": "latest",
     "apollo-resolvers": "latest",
     "apollo-server-express": "latest",
-    "@babel/node": "latest",
-    "@babel/core": "latest",
-    "@babel/preset-env": "latest",
     "bcrypt": "latest",
     "body-parser": "latest",
     "chalk": "latest",
@@ -40,6 +40,6 @@
     ]
   },
   "devDependencies": {
-    "graphql-markdown": "^3.2.0"
+    "graphql-markdown": "^6.0.0"
   }
 }
